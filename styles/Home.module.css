@@ -1,0 +1,62 @@
+.container{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  width:100vw;
+  height:100dvh;
+  flex-direction: column;
+  overflow:hidden;
+}
+
+/* Fallback for browsers that don't support dvh */
+@supports not (height: 100dvh) {
+  .container {
+    height: 100vh;
+  }
+}
+
+.box{
+  width: 95%;
+  height: 97%;
+  background-color: var(--offWhite);
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  display:flex;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 5px 15px;
+  flex-direction: column;
+  position: relative;
+  border:var(--smallBorder)
+}
+
+.innerContainer{
+  width:80vw;
+  max-width: var(--mainColumnWidth);
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 800px) {
+  .box{
+    height:90%;
+    width:90%;
+  }
+
+  .innerContainer {
+    width: 50vw; /* Set the width to 50vw on desktop */
+  }
+}
+
+.debugButtons{
+  display:flex;
+  width:50vw;
+  height:20px;
+  justify-content: space-between;
+  Bottom:0;
+  Left:0;
+  position:fixed;
+}
+
+.container h1{
+  font-size: 2.5em;
+}

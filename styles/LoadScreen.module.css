@@ -1,0 +1,59 @@
+.container{
+  height:100vh;
+  width:100vw;
+  z-index:99;
+  position:fixed;
+  user-select: none;
+  -webkit-user-select: none; /* For WebKit browsers (Chrome, Safari) */
+  -moz-user-select: none; /* For Mozilla Firefox */
+  -ms-user-select: none; /* For Microsoft Internet Explorer and Edge */
+  Top:0;
+  Left:0;
+
+  display:flex;
+  justify-content: center;
+  align-items: center;
+
+  /* This will make the div transparent */
+  background: rgba(52, 53, 95, 0.75); /* Adjust the alpha value (0.5 here) to change the transparency level */
+  /* This will blur whatever is behind the div */
+  backdrop-filter: blur(2px); /* Adjust the pixel value (10px here) to change the intensity of the blur */
+
+  cursor:wait;
+}
+
+.localContainer{
+  height:100%;
+  width:100%;
+  position:absolute;
+}
+
+.spinnerOuterContainer{
+  display: flex;
+  flex-direction: column;
+  gap:2em;
+  width: 500px;
+  height: 100px;
+  justify-content: center;
+  align-items: center;
+
+  font-family: 'Playfair Display';
+  color:var(--highlight);
+}
+
+.spinnerContainer{
+  width:100px;
+  height:100px;
+}
+
+.spinner{
+  margin:auto;
+  font-size:1.5em;
+  font-weight: bold;
+}
+
+.spinnerMessage{
+  font-size:1.25em;
+  text-align: center;
+  font-weight: medium;
+}

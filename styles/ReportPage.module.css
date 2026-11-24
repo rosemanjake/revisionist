@@ -1,0 +1,14 @@
+.container{
+  width:100%;
+}
+
+.outerContainer{
+  width:90vw;
+  height:100%;
+  max-width:850px;
+  margin-left:auto;
+  margin-right:auto;
+  padding-bottom:3em;
+  min-height:100vh;
+  padding-top:calc(50px + 2em);
+}

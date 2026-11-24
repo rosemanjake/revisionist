@@ -1,0 +1,15 @@
+.gcloudignore
+.git
+.gitignore
+
+# Local env and credentials
+.env
+.env.*
+!.env.example
+*service-account*.json
+*-firebase-adminsdk-*.json
+
+# Build artifacts & dependencies (rebuilt via gcp-build on App Engine)
+node_modules/
+.next/
+tsconfig.tsbuildinfo

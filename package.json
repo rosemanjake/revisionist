@@ -1,0 +1,37 @@
+{
+  "name": "reviewer",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "gcp-build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@google/genai": "^3.6.1",
+    "firebase-admin": "^14.5.1",
+    "formidable": "^3.5.1",
+    "framer-motion": "^11.0.8",
+    "next": "14.1.0",
+    "nodemailer": "^6.9.11",
+    "pdf-parse": "^1.1.1",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-markdown": "^9.0.1",
+    "text-readability": "^1.1.0",
+    "textract": "^2.5.0"
+  },
+  "devDependencies": {
+    "@types/formidable": "^3.5.1",
+    "@types/node": "^20",
+    "@types/nodemailer": "^6.4.14",
+    "@types/pdf-parse": "^1.1.5",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.1.0",
+    "typescript": "^5"
+  }
+}

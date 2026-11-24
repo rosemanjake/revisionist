@@ -1,0 +1,146 @@
+.container {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.dialogContainer {
+  height: 400px;
+  width: 500px;
+  margin: auto;
+}
+
+.dialog {
+  padding: 20px;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: var(--offWhite);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  box-sizing: border-box;
+  border-radius: 10px;
+  border: var(--border);
+  max-width: 95vw;
+}
+
+.dialogTitle {
+  margin-top: 0;
+}
+
+.inputField, .validEmail, .invalidEmail {
+  width: 66%;
+  padding: 5px;
+}
+
+.cross {
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 5px;
+  margin-right: 15px;
+  font-size: 1.5em;
+}
+
+.cross:hover {
+  color: var(--highlight);
+}
+
+.inputFieldContainer {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  margin-bottom: 10px;
+}
+
+.label {
+  flex: 1;
+  width: 33%;
+}
+
+.sliderOuterContainer{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  width:100%;
+  gap:10px;
+  margin-top:10px;
+}
+
+.sliderContainer {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 10px;
+}
+
+.slider {
+  flex-grow: 1;
+  -webkit-appearance: none;
+  width: 100%;
+  height: 5px;
+  border-radius: 5px;
+  background: var(--secondary);
+  outline: none;
+  opacity: 0.7;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--primary);
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--primary);
+  cursor: pointer;
+}
+
+.buttonContainer {
+  display: flex;
+  width: 80%;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.blur {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  backdrop-filter: blur(1px);
+  z-index: 5;
+}
+
+.errorMessage {
+  color:red;
+  margin-top: 10px;
+}
+
+.manuscriptMessage {
+  text-align: center;
+  margin-top: 10px;
+}

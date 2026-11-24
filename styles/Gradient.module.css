@@ -1,0 +1,33 @@
+@property --gradient-angle {
+  syntax: '<angle>';
+  initial-value: 45deg;
+  inherits: false;
+}
+
+@keyframes rotateGradient {
+  from {
+    --gradient-angle: 45deg;
+  }
+  to {
+    --gradient-angle: 405deg;
+  }
+}
+
+.gradient {
+  height: 100dvh;
+  width: 100vw;
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  background: linear-gradient(var(--gradient-angle, 45deg), var(--primary) -50%, var(--highlight) 150%);
+  animation: rotateGradient 18s linear infinite;
+}
+
+/* Fallback for browsers that don't support dvh */
+@supports not (height: 100dvh) {
+  .gradient {
+    height: 100vh;
+  }
+}

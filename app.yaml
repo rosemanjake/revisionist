@@ -1,0 +1,11 @@
+runtime: nodejs24
+
+env_variables:
+  GOOGLE_CLOUD_LOCATION: "global"
+  VERTEX_AI_MODEL: "gemini-4-neon"
+
+handlers:
+  - url: /.*
+    script: auto
+    secure: always
+    redirect_http_response_code: 301
