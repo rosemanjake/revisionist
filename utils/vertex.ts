@@ -1,33 +1,36 @@
 import { GoogleGenAI, ThinkingLevel, Type, type Schema } from '@google/genai';
+import { normalizeReportMarkdown } from './text';
 import type { ReviewSections } from './types';
 
 const DEFAULT_VERTEX_LOCATION = 'global';
 const DEFAULT_VERTEX_MODEL = 'gemini-4-neon';
 const MAX_OUTPUT_TOKENS = 32768;
 
+const MARKDOWN_FORMAT_NOTE =
+  'Format as valid multi-line Markdown using real newline characters (\\n\\n) between every heading (# / ##), paragraph, and bullet list item (- ). Never collapse a section onto a single line.';
+
 const REVIEW_RESPONSE_SCHEMA: Schema = {
   type: Type.OBJECT,
   properties: {
     overview: {
       type: Type.STRING,
-      description:
-        'ONLY the Overview section (Overall Impression and Suggestions for Improvement). Do NOT include Plot, Characters, Prose, or Theme here.',
+      description: `ONLY the Overview section (Overall Impression and Suggestions for Improvement). Do NOT include Plot, Characters, Prose, or Theme here. ${MARKDOWN_FORMAT_NOTE}`,
     },
     plot: {
       type: Type.STRING,
-      description: 'ONLY the Plot analysis section. Do NOT include other sections here.',
+      description: `ONLY the Plot analysis section. Do NOT include other sections here. ${MARKDOWN_FORMAT_NOTE}`,
     },
     characters: {
       type: Type.STRING,
-      description: 'ONLY the Characters analysis section. Do NOT include other sections here.',
+      description: `ONLY the Characters analysis section. Do NOT include other sections here. ${MARKDOWN_FORMAT_NOTE}`,
     },
     prose: {
       type: Type.STRING,
-      description: 'ONLY the Prose analysis section. Do NOT include other sections here.',
+      description: `ONLY the Prose analysis section. Do NOT include other sections here. ${MARKDOWN_FORMAT_NOTE}`,
     },
     theme: {
       type: Type.STRING,
-      description: 'ONLY the Theme analysis section. Do NOT include other sections here.',
+      description: `ONLY the Theme analysis section. Do NOT include other sections here. ${MARKDOWN_FORMAT_NOTE}`,
     },
   },
   required: ['overview', 'plot', 'characters', 'prose', 'theme'],
@@ -115,7 +118,13 @@ export async function generateStructuredReview(
       return null;
     }
 
-    return parsed;
+    return {
+      overview: normalizeReportMarkdown(parsed.overview),
+      plot: normalizeReportMarkdown(parsed.plot),
+      characters: normalizeReportMarkdown(parsed.characters),
+      prose: normalizeReportMarkdown(parsed.prose),
+      theme: normalizeReportMarkdown(parsed.theme),
+    };
   } catch (error) {
     console.error('Failed to parse JSON response from Vertex AI:', error);
     return null;

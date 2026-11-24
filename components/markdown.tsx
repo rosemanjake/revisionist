@@ -1,13 +1,16 @@
+import { useMemo } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
 import styles from '@/styles/Markdown.module.css';
+import { normalizeReportMarkdown } from '@/utils/text';
 
 interface MarkdownProps {
   markdown: string;
 }
 
 export default function Markdown({ markdown }: MarkdownProps): JSX.Element {
-  const hasContent = Boolean(markdown);
+  const formattedMarkdown = useMemo(() => normalizeReportMarkdown(markdown), [markdown]);
+  const hasContent = Boolean(formattedMarkdown);
 
   return (
     <div className={styles.container}>
@@ -22,7 +25,7 @@ export default function Markdown({ markdown }: MarkdownProps): JSX.Element {
               ease: 'easeInOut',
             }}
           >
-            <ReactMarkdown>{markdown}</ReactMarkdown>
+            <ReactMarkdown>{formattedMarkdown}</ReactMarkdown>
           </motion.div>
         )}
       </AnimatePresence>

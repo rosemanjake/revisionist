@@ -58,6 +58,7 @@ Follow these specific instructions with regards to examples:
 A final instruction:
 
 - Return your review as a JSON object with separate fields for overview, plot, characters, prose, and theme. Put each section in its SEPARATE field and do NOT combine multiple sections into one field.
+- Format every field as proper multi-line Markdown using real newline characters (\\n\\n) after every heading (# and ##), between paragraphs, and before every bullet list item (- ). Do NOT put headings and body text on the same line.
 `;
 
 const STRUCTURE = `
