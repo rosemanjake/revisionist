@@ -9,7 +9,13 @@ export default function WordCounter(): JSX.Element {
   const { wordCount } = useInputContext();
 
   return (
-    <div className={wordCount >= MAX_WORD_COUNT ? styles.overLimitContainer : styles.container}>
+    <div
+      className={
+        wordCount >= MAX_WORD_COUNT
+          ? styles.overLimitContainer
+          : styles.container
+      }
+    >
       {`${wordCount.toLocaleString()} / ${MAX_WORD_COUNT.toLocaleString()} words`}
     </div>
   );

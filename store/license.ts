@@ -1,7 +1,8 @@
 import type { VerifyLicenseResponse } from '@/utils/types';
 
 const GUMROAD_VERIFY_URL = 'https://api.gumroad.com/v2/licenses/verify';
-const GUMROAD_DECREMENT_URL = 'https://api.gumroad.com/v2/licenses/decrement_uses_count';
+const GUMROAD_DECREMENT_URL =
+  'https://api.gumroad.com/v2/licenses/decrement_uses_count';
 
 interface GumroadVerifyApiResponse {
   success?: boolean;
@@ -21,7 +22,11 @@ export async function verifyGumroadLicense(
   const trimmedKey = licenseKey?.trim() ?? '';
 
   if (!trimmedKey || trimmedKey === 'none') {
-    return { success: false, message: 'No key provided', licenseKey: trimmedKey };
+    return {
+      success: false,
+      message: 'No key provided',
+      licenseKey: trimmedKey,
+    };
   }
 
   const masterKey = process.env.MASTER_LICENSE_KEY?.trim();
@@ -59,12 +64,20 @@ export async function verifyGumroadLicense(
     if (data.success === true) {
       const maxAllowedUses = incrementUsesCount ? 1 : 0;
       if (typeof data.uses === 'number' && data.uses > maxAllowedUses) {
-        return { success: false, message: 'Key already used', licenseKey: trimmedKey };
+        return {
+          success: false,
+          message: 'Key already used',
+          licenseKey: trimmedKey,
+        };
       }
       return { success: true, message: 'Key is valid', licenseKey: trimmedKey };
     }
 
-    return { success: false, message: 'Key is invalid', licenseKey: trimmedKey };
+    return {
+      success: false,
+      message: 'Key is invalid',
+      licenseKey: trimmedKey,
+    };
   } catch (error) {
     console.error('Error verifying Gumroad license:', error);
     return {
@@ -82,7 +95,11 @@ export async function decrementLicenseUses(
   const trimmedKey = licenseKey?.trim() ?? '';
   const masterKey = process.env.MASTER_LICENSE_KEY?.trim();
 
-  if (!trimmedKey || trimmedKey === 'none' || (masterKey && trimmedKey === masterKey)) {
+  if (
+    !trimmedKey ||
+    trimmedKey === 'none' ||
+    (masterKey && trimmedKey === masterKey)
+  ) {
     return false;
   }
 

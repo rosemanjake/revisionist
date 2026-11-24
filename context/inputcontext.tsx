@@ -52,19 +52,29 @@ interface InputContextProviderProps {
 export function useInputContext(): InputContextValue {
   const context = useContext(InputContext);
   if (!context) {
-    throw new Error('useInputContext must be used within an InputContextProvider');
+    throw new Error(
+      'useInputContext must be used within an InputContextProvider'
+    );
   }
   return context;
 }
 
-export default function InputContextProvider({ children }: InputContextProviderProps): JSX.Element {
-  const [currentValidLicense, setCurrentValidLicense] = useState<string | null>(null);
-  const [shouldDisplayLicenseDialog, setShouldDisplayLicenseDialog] = useState<boolean>(false);
+export default function InputContextProvider({
+  children,
+}: InputContextProviderProps): JSX.Element {
+  const [currentValidLicense, setCurrentValidLicense] = useState<string | null>(
+    null
+  );
+  const [shouldDisplayLicenseDialog, setShouldDisplayLicenseDialog] =
+    useState<boolean>(false);
   const [wordCount, setWordCount] = useState<number>(0);
   const [inputStory, setInputStory] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [loadingMessage, setLoadingMessage] = useState<string>(DEFAULT_LOADING_MESSAGE);
-  const [shouldDisplaySidebar, setShouldDisplaySidebar] = useState<boolean>(false);
+  const [loadingMessage, setLoadingMessage] = useState<string>(
+    DEFAULT_LOADING_MESSAGE
+  );
+  const [shouldDisplaySidebar, setShouldDisplaySidebar] =
+    useState<boolean>(false);
   const [activeTab, setActiveTab] = useState<ReportTab>('overview');
   const [isMobile, setIsMobile] = useState<boolean>(true);
   const [alertMessage, setAlertMessage] = useState<string | null>(null);
@@ -131,5 +141,9 @@ export default function InputContextProvider({ children }: InputContextProviderP
     ]
   );
 
-  return <InputContext.Provider value={contextValue}>{children}</InputContext.Provider>;
+  return (
+    <InputContext.Provider value={contextValue}>
+      {children}
+    </InputContext.Provider>
+  );
 }

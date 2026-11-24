@@ -1,10 +1,15 @@
 import { randomBytes } from 'crypto';
 import { PUBLIC_REVIEW_IDS } from '@/utils/constants';
-import type { FullReport, ReportResponse, ValidateEmailResponse } from '@/utils/types';
+import type {
+  FullReport,
+  ReportResponse,
+  ValidateEmailResponse,
+} from '@/utils/types';
 import { getDb } from './store';
 
 const REPORTS_COLLECTION = 'reports';
-const REPORT_ID_ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+const REPORT_ID_ALPHABET =
+  'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 const REPORT_ID_LENGTH = 10;
 const MAX_ID_ATTEMPTS = 10;
 
@@ -113,7 +118,8 @@ export async function getAuthorizedReport(
     };
   }
 
-  const storedEmail = typeof data?.email === 'string' ? data.email.trim().toLowerCase() : '';
+  const storedEmail =
+    typeof data?.email === 'string' ? data.email.trim().toLowerCase() : '';
   if (!storedEmail || storedEmail !== trimmedEmail) {
     return {
       isValid: false,

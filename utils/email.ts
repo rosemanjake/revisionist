@@ -34,7 +34,8 @@ function resolveEmailConfig(): EmailConfig | null {
   const portRaw = process.env.SMTP_PORT?.trim();
   const port = portRaw ? Number.parseInt(portRaw, 10) : undefined;
   const secure = process.env.SMTP_SECURE === 'true';
-  const from = process.env.SMTP_FROM?.trim() || `${DEFAULT_SENDER_NAME} <${user}>`;
+  const from =
+    process.env.SMTP_FROM?.trim() || `${DEFAULT_SENDER_NAME} <${user}>`;
 
   return {
     user,
@@ -109,7 +110,9 @@ export async function verifyEmailConnection(
 
   const config = resolveEmailConfig();
   if (!config) {
-    console.error('Email configuration missing: set SMTP_USER and SMTP_PASS environment variables.');
+    console.error(
+      'Email configuration missing: set SMTP_USER and SMTP_PASS environment variables.'
+    );
     return false;
   }
 
@@ -149,7 +152,8 @@ export async function sendReportEmail(
   }
 
   const transporter = customTransporter ?? getTransporter(config!);
-  const fromAddress = config?.from ?? `${DEFAULT_SENDER_NAME} <${SUPPORT_EMAIL}>`;
+  const fromAddress =
+    config?.from ?? `${DEFAULT_SENDER_NAME} <${SUPPORT_EMAIL}>`;
   const displayTitle = title.trim() || 'Untitled Manuscript';
 
   try {

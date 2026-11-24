@@ -9,7 +9,9 @@ interface FileUploadProps {
   handleSubmit: (wordCount: number) => void;
 }
 
-export default function FileUpload({ handleSubmit }: FileUploadProps): JSX.Element {
+export default function FileUpload({
+  handleSubmit,
+}: FileUploadProps): JSX.Element {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const {
     setAlertMessage,
@@ -55,14 +57,18 @@ export default function FileUpload({ handleSubmit }: FileUploadProps): JSX.Eleme
     }
   }
 
-  async function handleFileChange(event: React.ChangeEvent<HTMLInputElement>): Promise<void> {
+  async function handleFileChange(
+    event: React.ChangeEvent<HTMLInputElement>
+  ): Promise<void> {
     const selectedFile = event.target.files?.[0];
     if (!selectedFile) {
       return;
     }
 
     if (!ALLOWED_UPLOAD_MIME_TYPES.includes(selectedFile.type)) {
-      setAlertMessage('Unsupported file type. Please select a PDF, DOCX, TXT, or EPUB file.');
+      setAlertMessage(
+        'Unsupported file type. Please select a PDF, DOCX, TXT, or EPUB file.'
+      );
       if (fileInputRef.current) {
         fileInputRef.current.value = '';
       }

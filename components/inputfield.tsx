@@ -139,8 +139,8 @@ export default function InputField(): JSX.Element {
         className={styles.animateContainer}
       >
         <span>
-          See our <Link href="/examples">examples</Link> for a sense of what your manuscript
-          report will contain.
+          See our <Link href="/examples">examples</Link> for a sense of what
+          your manuscript report will contain.
         </span>
       </motion.div>
     </div>

@@ -22,7 +22,11 @@ function getButtonClassName(type: ButtonVariant): string {
   }
 }
 
-export default function Button({ text, onClick, type = 'basic' }: ButtonProps): JSX.Element {
+export default function Button({
+  text,
+  onClick,
+  type = 'basic',
+}: ButtonProps): JSX.Element {
   return (
     <div className={getButtonClassName(type)} onClick={onClick}>
       {text}

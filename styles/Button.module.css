@@ -1,34 +1,42 @@
-.button, .topBarButton, .hollowButton, .hollowTopBarButton{
-  width:100px;
-  height:40px;
+.button,
+.topBarButton,
+.hollowButton,
+.hollowTopBarButton {
+  width: 100px;
+  height: 40px;
   border: 3px solid transparent;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 10px;
-  font-size:1em;
+  font-size: 1em;
   cursor: pointer;
   background-color: var(--primary);
-  color:var(--offWhite);
+  color: var(--offWhite);
   transition: 200ms;
 
   box-shadow: rgba(100, 100, 111, 0.1) 0px 7px 29px 0px;
 }
 
-.topBarButton, .hollowTopBarButton{
-  height:30px;
-  font-size:.8em;
+.topBarButton,
+.hollowTopBarButton {
+  height: 30px;
+  font-size: 0.8em;
 }
 
-.button:hover, .topBarButton:hover, .hollowButton:hover, .hollowTopBarButton:hover{
-  border-color:var(--highlight);
-  color:var(--highlight);
+.button:hover,
+.topBarButton:hover,
+.hollowButton:hover,
+.hollowTopBarButton:hover {
+  border-color: var(--highlight);
+  color: var(--highlight);
 
-  box-shadow: var(--hoverGlow)
+  box-shadow: var(--hoverGlow);
 }
 
-.hollowButton, .hollowTopBarButton{
+.hollowButton,
+.hollowTopBarButton {
   background-color: transparent;
-  color:var(--primary);
-  border:var(--border)
+  color: var(--primary);
+  border: var(--border);
 }

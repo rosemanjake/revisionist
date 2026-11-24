@@ -1,6 +1,7 @@
 export const SUPPORT_EMAIL =
   process.env.NEXT_PUBLIC_SUPPORT_EMAIL ?? 'roseman.jake@gmail.com';
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://revisionist.ai';
+export const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ?? 'https://revisionist.ai';
 export const CANONICAL_URL =
   process.env.NEXT_PUBLIC_CANONICAL_URL ?? 'https://www.revisionistai.com';
 export const GUMROAD_PRODUCT_URL =

@@ -6,7 +6,9 @@ import Button from './button';
 
 export default function AlertMessage(): JSX.Element {
   const { alertMessage, setAlertMessage } = useInputContext();
-  const [shouldDisplayAlert, setShouldDisplayAlert] = useState<boolean>(alertMessage !== null);
+  const [shouldDisplayAlert, setShouldDisplayAlert] = useState<boolean>(
+    alertMessage !== null
+  );
 
   return (
     <>

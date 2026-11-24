@@ -36,7 +36,9 @@
   margin-top: 0;
 }
 
-.inputField, .validEmail, .invalidEmail {
+.inputField,
+.validEmail,
+.invalidEmail {
   width: 66%;
   padding: 5px;
 }
@@ -68,13 +70,13 @@
   width: 33%;
 }
 
-.sliderOuterContainer{
-  display:flex;
+.sliderOuterContainer {
+  display: flex;
   flex-direction: column;
   align-items: center;
-  width:100%;
-  gap:10px;
-  margin-top:10px;
+  width: 100%;
+  gap: 10px;
+  margin-top: 10px;
 }
 
 .sliderContainer {
@@ -93,7 +95,7 @@
   background: var(--secondary);
   outline: none;
   opacity: 0.7;
-  transition: opacity .2s;
+  transition: opacity 0.2s;
 }
 
 .slider:hover {
@@ -136,7 +138,7 @@
 }
 
 .errorMessage {
-  color:red;
+  color: red;
   margin-top: 10px;
 }
 

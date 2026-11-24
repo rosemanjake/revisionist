@@ -21,7 +21,11 @@
   top: 0;
   left: 0;
   opacity: 1;
-  background: linear-gradient(var(--gradient-angle, 45deg), var(--primary) -50%, var(--highlight) 150%);
+  background: linear-gradient(
+    var(--gradient-angle, 45deg),
+    var(--primary) -50%,
+    var(--highlight) 150%
+  );
   animation: rotateGradient 18s linear infinite;
 }
 

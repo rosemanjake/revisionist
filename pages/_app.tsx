@@ -32,12 +32,18 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
     <InputContextProvider>
       <Head>
         <title>{SITE_TITLE}</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, viewport-fit=cover"
+        />
         <meta name="description" content={SITE_DESCRIPTION} />
         <meta name="keywords" content={SITE_KEYWORDS} />
         <meta name="author" content="Jake Roseman" />
         <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Revisionist | AI-Powered Manuscript Review" />
+        <meta
+          property="og:title"
+          content="Revisionist | AI-Powered Manuscript Review"
+        />
         <meta
           property="og:description"
           content="Get comprehensive AI-powered reviews for your fiction manuscripts. Fast, affordable, and insightful feedback to elevate your writing."
@@ -50,7 +56,10 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
         <meta property="og:locale" content="en_US" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Revisionist | AI-Powered Manuscript Review" />
+        <meta
+          name="twitter:title"
+          content="Revisionist | AI-Powered Manuscript Review"
+        />
         <meta
           name="twitter:description"
           content="Revolutionize your writing with AI-powered manuscript reviews. Fast, comprehensive, and affordable."

@@ -24,7 +24,10 @@ export default function Dropdown<T extends string = string>({
 
   useEffect(() => {
     function handleOutsideClick(event: MouseEvent): void {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
         setIsOpen(false);
       }
     }
@@ -44,14 +47,19 @@ export default function Dropdown<T extends string = string>({
     setIsOpen((prev) => !prev);
   }
 
-  function handleSelect(event: React.MouseEvent<HTMLDivElement>, option: T): void {
+  function handleSelect(
+    event: React.MouseEvent<HTMLDivElement>,
+    option: T
+  ): void {
     event.stopPropagation();
     onChange(option);
     setSelection(option);
     setIsOpen(false);
   }
 
-  const rootClassName = className ? `${styles.dropdown} ${className}` : styles.dropdown;
+  const rootClassName = className
+    ? `${styles.dropdown} ${className}`
+    : styles.dropdown;
 
   return (
     <div ref={dropdownRef} className={rootClassName} onClick={handleToggle}>
@@ -65,7 +73,9 @@ export default function Dropdown<T extends string = string>({
             <div
               key={option}
               className={
-                activeOption === option ? styles.dropdownOptionActive : styles.dropdownOption
+                activeOption === option
+                  ? styles.dropdownOptionActive
+                  : styles.dropdownOption
               }
               onClick={(event) => handleSelect(event, option)}
             >

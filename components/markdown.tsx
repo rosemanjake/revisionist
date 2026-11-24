@@ -9,7 +9,10 @@ interface MarkdownProps {
 }
 
 export default function Markdown({ markdown }: MarkdownProps): JSX.Element {
-  const formattedMarkdown = useMemo(() => normalizeReportMarkdown(markdown), [markdown]);
+  const formattedMarkdown = useMemo(
+    () => normalizeReportMarkdown(markdown),
+    [markdown]
+  );
   const hasContent = Boolean(formattedMarkdown);
 
   return (

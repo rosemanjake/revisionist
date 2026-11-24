@@ -38,7 +38,8 @@ export async function fetchReport(
       success: true,
       message: 'Route fetched successfully',
       route: responseData.route ?? null,
-      content: typeof responseData.content === 'string' ? responseData.content : null,
+      content:
+        typeof responseData.content === 'string' ? responseData.content : null,
     };
   } catch (error) {
     console.error('Failed to send data to the API:', error);

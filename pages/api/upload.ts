@@ -3,7 +3,10 @@ import formidable, { type File as FormidableFile } from 'formidable';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import pdfParse from 'pdf-parse';
 import textract from 'textract';
-import { ALLOWED_UPLOAD_MIME_TYPES, MAX_UPLOAD_SIZE_BYTES } from '@/utils/constants';
+import {
+  ALLOWED_UPLOAD_MIME_TYPES,
+  MAX_UPLOAD_SIZE_BYTES,
+} from '@/utils/constants';
 import type { UploadResponse } from '@/utils/types';
 
 export const config = {
@@ -16,7 +19,10 @@ interface HttpError {
   httpCode?: number;
 }
 
-function extractWithTextract(mimeType: string, filePath: string): Promise<string> {
+function extractWithTextract(
+  mimeType: string,
+  filePath: string
+): Promise<string> {
   return new Promise((resolve, reject) => {
     textract.fromFileWithMimeAndPath(mimeType, filePath, (error, text) => {
       if (error) {
@@ -88,7 +94,8 @@ export default async function handler(
   if (!ALLOWED_UPLOAD_MIME_TYPES.includes(mimeType)) {
     await cleanupUploadedFile(uploadedFile.filepath);
     res.status(400).json({
-      error: 'Unsupported file type. Please upload a PDF, DOCX, TXT, or EPUB file.',
+      error:
+        'Unsupported file type. Please upload a PDF, DOCX, TXT, or EPUB file.',
     });
     return;
   }

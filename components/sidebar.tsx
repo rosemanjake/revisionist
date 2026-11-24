@@ -38,7 +38,12 @@ function Cross(): JSX.Element {
   );
 }
 
-function SideBarLink({ url, onClick, innerText, delay }: SidebarLinkProps): JSX.Element {
+function SideBarLink({
+  url,
+  onClick,
+  innerText,
+  delay,
+}: SidebarLinkProps): JSX.Element {
   const router = useRouter();
   const { setShouldDisplaySidebar } = useInputContext();
   const [isHovered, setIsHovered] = useState<boolean>(false);
@@ -153,7 +158,11 @@ export function Sidebar(): JSX.Element {
         <SideBarLink innerText="About" delay={0.07} url="/about" />
         <SideBarLink innerText="Examples" delay={0.14} url="/examples" />
         <SideBarLink innerText="FAQs" delay={0.21} url="/faq" />
-        <SideBarLink innerText="Get license" delay={0.28} onClick={openGumroad} />
+        <SideBarLink
+          innerText="Get license"
+          delay={0.28}
+          onClick={openGumroad}
+        />
       </div>
       <div className={styles.copyright}>© Jake Roseman, 2024</div>
     </motion.div>

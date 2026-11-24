@@ -29,7 +29,9 @@ function Spinner({ message = null }: SpinnerProps): JSX.Element {
   return (
     <div className={styles.spinnerOuterContainer}>
       <div className={styles.spinnerContainer}>
-        <div className={styles.spinner}>{`Loading${'.'.repeat(ellipsisCount)}`}</div>
+        <div
+          className={styles.spinner}
+        >{`Loading${'.'.repeat(ellipsisCount)}`}</div>
       </div>
       {message && <div className={styles.spinnerMessage}>{message}</div>}
     </div>
@@ -50,7 +52,9 @@ export default function LoadScreen({ type }: LoadScreenProps): JSX.Element {
         ease: 'easeInOut',
       }}
     >
-      {type !== 'local' && <Spinner message={loadingMessage || DEFAULT_LOADING_MESSAGE} />}
+      {type !== 'local' && (
+        <Spinner message={loadingMessage || DEFAULT_LOADING_MESSAGE} />
+      )}
     </motion.div>
   );
 }

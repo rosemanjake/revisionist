@@ -53,11 +53,15 @@ export function normalizeReportMarkdown(markdown: string): string {
     return normalized;
   }
 
-  // Recover structure if an LLM flattened a Markdown section onto a single line.
-  normalized = normalized.replace(INLINE_HEADING_REGEX, (_match, prefix: string, heading: string) => {
-    const leading = prefix ? '\n\n' : '';
-    return `${leading}${heading}\n\n`;
-  });
+  // Recover structure if an LLM flattened a Markdown section onto a single
+  // line.
+  normalized = normalized.replace(
+    INLINE_HEADING_REGEX,
+    (_match, prefix: string, heading: string) => {
+      const leading = prefix ? '\n\n' : '';
+      return `${leading}${heading}\n\n`;
+    }
+  );
 
   normalized = normalized.replace(INLINE_LIST_ITEM_REGEX, '\n\n$1');
 

@@ -30,8 +30,12 @@ export default function Home(): JSX.Element {
     <>
       <AnimatePresence>{isSimpleLoading && <SimpleLoading />}</AnimatePresence>
       <Gradient />
-      <AnimatePresence>{isLoading && <LoadScreen type="fullscreen" />}</AnimatePresence>
-      <AnimatePresence>{alertMessage !== null && <AlertMessage />}</AnimatePresence>
+      <AnimatePresence>
+        {isLoading && <LoadScreen type="fullscreen" />}
+      </AnimatePresence>
+      <AnimatePresence>
+        {alertMessage !== null && <AlertMessage />}
+      </AnimatePresence>
       <AnimatePresence>{shouldDisplaySidebar && <Sidebar />}</AnimatePresence>
       <div className={styles.container}>
         <div className={styles.box}>

@@ -253,13 +253,16 @@ function ReadabilityScore({
         <strong>Explanation:</strong> {description}
       </div>
       <div className={styles.explanation}>
-        <strong>Verdict:</strong> {getScoreExplanation(score, name, explanations)}
+        <strong>Verdict:</strong>{' '}
+        {getScoreExplanation(score, name, explanations)}
       </div>
     </div>
   );
 }
 
-export default function ReadabilityReport({ reportString }: ReadabilityReportProps): JSX.Element {
+export default function ReadabilityReport({
+  reportString,
+}: ReadabilityReportProps): JSX.Element {
   const report = useMemo<Partial<ReadabilityReportStructure> | null>(() => {
     try {
       return JSON.parse(reportString) as Partial<ReadabilityReportStructure>;

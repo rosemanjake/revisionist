@@ -20,8 +20,14 @@ interface EmailFormProps {
   errorMessage: string | null;
 }
 
-function EmailForm({ onSubmit, setInputValue, errorMessage }: EmailFormProps): JSX.Element {
-  function handleInputValueChange(event: React.ChangeEvent<HTMLInputElement>): void {
+function EmailForm({
+  onSubmit,
+  setInputValue,
+  errorMessage,
+}: EmailFormProps): JSX.Element {
+  function handleInputValueChange(
+    event: React.ChangeEvent<HTMLInputElement>
+  ): void {
     setInputValue(event.target.value);
   }
 
@@ -45,7 +51,9 @@ function EmailForm({ onSubmit, setInputValue, errorMessage }: EmailFormProps): J
             style={{ height: '300px' }}
             onSubmit={handleFormSubmit}
           >
-            <div>Enter the email you used to request this manuscript review.</div>
+            <div>
+              Enter the email you used to request this manuscript review.
+            </div>
             <input type="email" onChange={handleInputValueChange} autoFocus />
             {errorMessage && <div>{errorMessage}</div>}
             <Button text="OK" onClick={onSubmit} />
@@ -73,7 +81,8 @@ export default function ReportPage(): JSX.Element {
   const [report, setReport] = useState<FullReport | null>(null);
   const [inputValue, setInputValue] = useState<string>('');
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const [shouldDisplayEmailForm, setShouldDisplayEmailForm] = useState<boolean>(false);
+  const [shouldDisplayEmailForm, setShouldDisplayEmailForm] =
+    useState<boolean>(false);
 
   useEffect(() => {
     setShouldDisplaySidebar(false);

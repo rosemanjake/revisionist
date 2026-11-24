@@ -31,7 +31,10 @@ export default async function handler(
 
   try {
     const incrementUsesCount = type !== 'validate';
-    const keyValidationResponse = await verifyGumroadLicense(key, incrementUsesCount);
+    const keyValidationResponse = await verifyGumroadLicense(
+      key,
+      incrementUsesCount
+    );
     res.status(200).json(keyValidationResponse);
   } catch (error) {
     console.error('License verification error:', error);

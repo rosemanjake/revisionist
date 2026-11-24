@@ -1,4 +1,5 @@
 import { GoogleGenAI, ThinkingLevel, Type, type Schema } from '@google/genai';
+import { loadPrompt } from './prompts';
 import { normalizeReportMarkdown } from './text';
 import type { ReviewSections } from './types';
 
@@ -6,31 +7,34 @@ const DEFAULT_VERTEX_LOCATION = 'global';
 const DEFAULT_VERTEX_MODEL = 'gemini-4-neon';
 const MAX_OUTPUT_TOKENS = 32768;
 
-const MARKDOWN_FORMAT_NOTE =
-  'Format as valid multi-line Markdown using real newline characters (\\n\\n) between every heading (# / ##), paragraph, and bullet list item (- ). Never collapse a section onto a single line.';
+const MARKDOWN_FORMAT_NOTE = loadPrompt('schema-markdown-format');
+
+function describeField(field: string): string {
+  return `${loadPrompt(`schema-fields/${field}`)} ${MARKDOWN_FORMAT_NOTE}`;
+}
 
 const REVIEW_RESPONSE_SCHEMA: Schema = {
   type: Type.OBJECT,
   properties: {
     overview: {
       type: Type.STRING,
-      description: `ONLY the Overview section (Overall Impression and Suggestions for Improvement). Do NOT include Plot, Characters, Prose, or Theme here. ${MARKDOWN_FORMAT_NOTE}`,
+      description: describeField('overview'),
     },
     plot: {
       type: Type.STRING,
-      description: `ONLY the Plot analysis section. Do NOT include other sections here. ${MARKDOWN_FORMAT_NOTE}`,
+      description: describeField('plot'),
     },
     characters: {
       type: Type.STRING,
-      description: `ONLY the Characters analysis section. Do NOT include other sections here. ${MARKDOWN_FORMAT_NOTE}`,
+      description: describeField('characters'),
     },
     prose: {
       type: Type.STRING,
-      description: `ONLY the Prose analysis section. Do NOT include other sections here. ${MARKDOWN_FORMAT_NOTE}`,
+      description: describeField('prose'),
     },
     theme: {
       type: Type.STRING,
-      description: `ONLY the Theme analysis section. Do NOT include other sections here. ${MARKDOWN_FORMAT_NOTE}`,
+      description: describeField('theme'),
     },
   },
   required: ['overview', 'plot', 'characters', 'prose', 'theme'],
@@ -45,10 +49,13 @@ function getVertexClient(): GoogleGenAI {
 
   const project = process.env.GOOGLE_CLOUD_PROJECT?.trim();
   if (!project) {
-    throw new Error('GOOGLE_CLOUD_PROJECT environment variable is required for Vertex AI.');
+    throw new Error(
+      'GOOGLE_CLOUD_PROJECT environment variable is required for Vertex AI.'
+    );
   }
 
-  const location = process.env.GOOGLE_CLOUD_LOCATION?.trim() || DEFAULT_VERTEX_LOCATION;
+  const location =
+    process.env.GOOGLE_CLOUD_LOCATION?.trim() || DEFAULT_VERTEX_LOCATION;
 
   cachedClient = new GoogleGenAI({
     vertexai: true,
@@ -102,7 +109,9 @@ export async function generateStructuredReview(
 
   const finishReason = response.candidates?.[0]?.finishReason;
   if (finishReason === 'MAX_TOKENS') {
-    console.error('Vertex AI response was truncated due to maxOutputTokens limit.');
+    console.error(
+      'Vertex AI response was truncated due to maxOutputTokens limit.'
+    );
   }
 
   const rawText = response.text;
@@ -114,7 +123,9 @@ export async function generateStructuredReview(
   try {
     const parsed: unknown = JSON.parse(rawText);
     if (!isValidReviewSections(parsed)) {
-      console.error('Missing or empty required fields in Vertex AI structured response.');
+      console.error(
+        'Missing or empty required fields in Vertex AI structured response.'
+      );
       return null;
     }
 

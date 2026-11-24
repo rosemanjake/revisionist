@@ -15,7 +15,12 @@ interface ReportTabProps {
   index: number;
 }
 
-function ReportTabItem({ tab, isActive, setActiveTab, index }: ReportTabProps): JSX.Element {
+function ReportTabItem({
+  tab,
+  isActive,
+  setActiveTab,
+  index,
+}: ReportTabProps): JSX.Element {
   let className = isActive ? styles.activeContainer : styles.container;
   if (index === 0) {
     className = `${className} ${styles.firstContainer}`;

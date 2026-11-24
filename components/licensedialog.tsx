@@ -44,7 +44,9 @@ function LicenseInputField({
   const [emailInputValue, setEmailInputValue] = useState<string>('');
   const [titleInputValue, setTitleInputValue] = useState<string>('');
   const [emailIsInvalid, setEmailIsInvalid] = useState<boolean>(false);
-  const [critiqueStyle, setCritiqueStyle] = useState<number>(CritiqueStyle.Balanced);
+  const [critiqueStyle, setCritiqueStyle] = useState<number>(
+    CritiqueStyle.Balanced
+  );
 
   const {
     setShouldDisplayLicenseDialog,
@@ -56,7 +58,9 @@ function LicenseInputField({
     setLoadingMessage,
   } = useInputContext();
 
-  function handleLicenseChange(event: React.ChangeEvent<HTMLInputElement>): void {
+  function handleLicenseChange(
+    event: React.ChangeEvent<HTMLInputElement>
+  ): void {
     setInputValue(event.target.value);
     setLicenseState(LicenseState.NOT_SUBMITTED);
     setErrorMessage(null);
@@ -78,7 +82,9 @@ function LicenseInputField({
     setErrorMessage(null);
   }
 
-  function handleSliderChange(event: React.ChangeEvent<HTMLInputElement>): void {
+  function handleSliderChange(
+    event: React.ChangeEvent<HTMLInputElement>
+  ): void {
     setCritiqueStyle(Number.parseInt(event.target.value, 10));
   }
 
@@ -123,7 +129,9 @@ function LicenseInputField({
         ) {
           setErrorMessage(reportData.message);
         } else {
-          setErrorMessage('Manuscript processing failed. Try again in a minute or two.');
+          setErrorMessage(
+            'Manuscript processing failed. Try again in a minute or two.'
+          );
         }
         return;
       }
@@ -136,7 +144,9 @@ function LicenseInputField({
       }
     } catch (error) {
       console.error('Failed to send data to the API:', error);
-      setErrorMessage('Manuscript processing failed. Try again in a minute or two.');
+      setErrorMessage(
+        'Manuscript processing failed. Try again in a minute or two.'
+      );
     } finally {
       setIsLoading(false);
     }
@@ -196,20 +206,27 @@ function LicenseInputField({
           <div>{`Review style: ${CRITIQUE_STYLE_LABELS[critiqueStyle - 1]}`}</div>
         </div>
       </div>
-      {errorMessage && <div className={styles.errorMessage}>{errorMessage}</div>}
+      {errorMessage && (
+        <div className={styles.errorMessage}>{errorMessage}</div>
+      )}
       <div className={styles.manuscriptMessage}>{manuscriptMessage}</div>
       <div className={styles.buttonContainer}>
         <Button text="Submit" onClick={handleSubmit} />
-        {wordCount > FREE_WORD_LIMIT && <Button text="Get license" onClick={openGumroad} />}
+        {wordCount > FREE_WORD_LIMIT && (
+          <Button text="Get license" onClick={openGumroad} />
+        )}
       </div>
     </>
   );
 }
 
 export default function LicenseDialog(): JSX.Element {
-  const [licenseState, setLicenseState] = useState<LicenseState>(LicenseState.NOT_SUBMITTED);
+  const [licenseState, setLicenseState] = useState<LicenseState>(
+    LicenseState.NOT_SUBMITTED
+  );
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const { setShouldDisplayLicenseDialog, storyInputValue, setWordCount } = useInputContext();
+  const { setShouldDisplayLicenseDialog, storyInputValue, setWordCount } =
+    useInputContext();
 
   function handleClose(): void {
     setShouldDisplayLicenseDialog(false);

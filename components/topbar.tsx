@@ -70,13 +70,17 @@ function TextButtonRow(): JSX.Element {
 
   return (
     <div className={styles.textButtonRow}>
-      {!isMobile && <TextButton text="About" onClick={() => void router.push('/about')} />}
+      {!isMobile && (
+        <TextButton text="About" onClick={() => void router.push('/about')} />
+      )}
       <TextButton text="Menu" onClick={() => setShouldDisplaySidebar(true)} />
     </div>
   );
 }
 
-export function ReportPageTopBar({ context }: ReportPageTopBarProps): JSX.Element {
+export function ReportPageTopBar({
+  context,
+}: ReportPageTopBarProps): JSX.Element {
   const { isMobile } = useInputContext();
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
 

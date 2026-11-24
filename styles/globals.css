@@ -12,11 +12,10 @@
   font-style: normal;
 }
 
-
 :root {
-  --primary: #34355F;
+  --primary: #34355f;
   --secondary: hwb(235 82% 4%);
-  --offWhite: #FFF4E9;
+  --offWhite: #fff4e9;
   --highlight: #ffb922;
 
   --border: 3px solid var(--primary);
@@ -28,53 +27,59 @@
   --smallHoverGlow: rgba(255, 185, 34, 0.2) 0 0 25px;
 }
 
-html body{
-  margin:0;
+html body {
+  margin: 0;
   font-family: 'Lato';
   color: var(--primary);
   background-color: var(--offWhite);
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: 'Playfair Display';
   color: var(--primary);
 }
 
-input{
+input {
   padding: 5px;
 }
 
 /* Styles the scrollbar track (the background) */
 ::-webkit-scrollbar-track {
   background-color: #f1f1f1; /* Light gray track background */
-  border-radius: 10px;       /* Rounded corners for the track */
+  border-radius: 10px; /* Rounded corners for the track */
 }
 
 /* Styles the scrollbar thumb (the part that's draggable) */
 ::-webkit-scrollbar-thumb {
-  background-color: #888;    /* Darker gray scrollbar thumb */
-  border-radius: 10px;       /* Rounded corners for the thumb */
-  border: 3px solid #f1f1f1; /* Creates a border around the thumb with the same color as the track background */
+  background-color: #888; /* Darker gray scrollbar thumb */
+  border-radius: 10px; /* Rounded corners for the thumb */
+  /* Border around the thumb, matching the track background */
+  border: 3px solid #f1f1f1;
 }
 
 /* Changes the thumb color on hover or when being clicked */
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #555;    /* Even darker color on hover */
+  background-color: #555; /* Even darker color on hover */
 }
 
 /* Styles the scrollbar itself (width and height) */
 ::-webkit-scrollbar {
-  width: 10px;               /* Width of the vertical scrollbar */
-  height: 10px;              /* Height of the horizontal scrollbar */
+  width: 10px; /* Width of the vertical scrollbar */
+  height: 10px; /* Height of the horizontal scrollbar */
 }
 
-.simpleLoading{
-  height:100%;
-  width:100%;
+.simpleLoading {
+  height: 100%;
+  width: 100%;
   cursor: wait;
-  z-index:99999999999999;
-  position:fixed;
-  Top:0;
-  Left:0;
+  z-index: 99999999999999;
+  position: fixed;
+  top: 0;
+  left: 0;
   backdrop-filter: blur(1px);
 }
